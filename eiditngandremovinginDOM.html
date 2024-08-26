@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing and removing in DOM</title>
+</head>
+<body style="background-color: #212121; color:#fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguge(langName){
+        const li = document.createElement('li')
+        li.innerHTML =  `${langName}`
+        document.querySelector('.language').appendChild(li)
+        //ye function bana toh dia ais mei ek problem ha. Abi toh list item mei ek hi child ha magar jb aur child banain gy toh aus ko shuru sy sara tree traverse krta prta. Jb jb mathod chalay ga tree traversal ho gi toh optimization issue ata ha
+    }
+    addLanguge("python")
+    addLanguge("Javascript")
+    
+    //So, for larger projects, following is preferred: 
+
+    function addOptiLanguage (langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("Go")
+    addOptiLanguage('NextJS')
+
+    //Edit
+    const lang = document.querySelector("li:nth-child(2)")
+    // lang.innerHTML = 'MAHERa' --> this is not aa recommended approach due to traversal
+    const newli = document.createElement('li')
+    newli.textContent = "C++"
+    lang.replaceWith(newli)
+    
+
+    const lang2 = document.querySelector("li:first-child")
+    lang2.outerHTML = '<li>Typescript<\li>'
+
+        const lastlang = document.querySelector('li:last-child')
+        lastlang.remove()
+</script>
+</html>
