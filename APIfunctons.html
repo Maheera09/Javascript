@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Maheera's JS practice</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+</body>
+
+<script>
+////////////////////SET TIMEOUT
+//     const mahi=()=>{
+//         console.log('Maheera')
+//     }
+//     setTimeout(mahi, 2000)
+
+//     const changetext = ()=>{
+//     document.querySelector('h1').innerHTML='New JS Projects'
+//     }
+//     // setTimeout(changetext, 2000)
+
+//     //There should be a option to stop this timeout event
+//     const changeMe = setTimeout(changetext, 3000)
+//    document.querySelector('#stop').addEventListener('click', ()=>{
+//     clearTimeout(changeMe)
+//     console.log('stop')
+//    })
+
+//////////////// SET INTERVAL
+
+// setInterval(()=>{ ye toh chalta hi jaye ga
+//     // console.log('Mahi', Date.now(), 2000)
+// })
+
+// const mydate = function(str){
+// console.log(str, Date.now())
+// }
+// const intervalID= setInterval(mydate, Date.now(), 'M')
+
+// clearInterval(intervalID)
+
+const start = document.querySelector('#start')
+const stop = document.querySelector('#stop')
+let clearvar; 
+const date1 = (str)=>{
+    console.log( Date.now(),str)
+}
+
+// setInterval(()=>{
+//     console.log(Date.now())
+// }, 2000)
+
+start.addEventListener('click', ()=>{
+    clearvar=setInterval(date1, 0, 'Hello')
+})
+
+stop.addEventListener('click', ()=>{
+    clearInterval(clearvar)
+})
+
+
+    </script>
+</html>
