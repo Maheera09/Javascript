@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closure</title>
+</head>
+<body style="background-color: black; color: white;">
+  <button id="orange">Orange</button>
+  <button id="green">Green</button>
+</body>
+<script>
+  //-----EXAMPLE 1-------//
+  function init() {
+    let name = "Mozilla"; // name is a local variable created by init
+    function displayName() {
+      // displayName() is the inner function, that forms a closure
+      console.log(name); // use variable declared in the parent function
+    }
+    displayName();
+  }
+  init();
+
+ //-----EXAMPLE 2-------//
+  function outer(){
+    let username = 'Mahi'
+    function inner(){
+      console.log('inner', username)
+    }
+    function inner2(){
+      console.log('inner2', username)
+    }    
+    inner()
+    inner2()
+  }
+  outer()
+  // console.log('outer', username) scope error
+
+
+  function makeFunc() {
+  const name = "Edge";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName; //idr function ka reference hi pas kr dia ha as return
+
+}
+
+const myFunc = makeFunc(); 
+//idr jab function execute ho gaya toh scope khatam ho gaya
+//if scope hi chala gaya ha toh how will lexical scoping work? 
+myFunc();
+
+ 
+// document.getElementById('orange').onclick = function(){
+//   document.body.style.backgroundColor = 'orange'
+// }
+// document.getElementById('green').onclick = function(){
+//   document.body.style.backgroundColor = 'green'
+// }
+
+function clickHandler(color){
+  // document.body.style.backgroundColor = `${color}`
+  return function(){
+    document.body.style.backgroundColor = `${color}`
+  }
+}
+
+
+document.getElementById('orange').onclick = clickHandler("orange")
+document.getElementById('green').onclick = clickHandler("green")
+
+</script>
+</html>
+  

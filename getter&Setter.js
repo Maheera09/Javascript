@@ -52,3 +52,24 @@ const fuser1 = new Users ('Mahi@example.com', '12345678')
 console.log(fuser1._password);
 
 //ek object based syntax hota ha for getters and setters
+
+ const USERS = {
+    _email: 'taylorswift@gmail.com',
+    _password: 'Evermore1989',
+ 
+    get email(){
+        return this._email.toUpperCase()
+    },
+    set email(value){
+        this._email = value
+    }
+    //getter aur setter special method ha jo property ky uper lagta ha.
+    //bascially, memory mei sy value la rhy hn aur dy rhy hn
+    //memory mei value ko override krny ky liye javascript mei getter and setter use hotay hn.
+    //ab yahan get ek special keyword ha jokay hmry property email py work kr rha ha 
+ }
+
+ const tea = Object.create(USERS)
+ //toh yahan USERS Ky base py ek object create kia ha
+
+console.log(tea.email); 
